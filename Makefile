@@ -1,7 +1,7 @@
-all: nunchuk
+all: build/nunchuk.so
 
-nunchuk: nunchuk.c
-	gcc nunchuk.c -o nunchuk
+build/nunchuk.so: nunchuk.c project.janet
+	jpm build
 
 clean:
-	rm -f nunchuk
+	rm -rf build/
