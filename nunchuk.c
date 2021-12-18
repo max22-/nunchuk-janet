@@ -19,15 +19,14 @@ static int _bz = 0, _bc = 0, _jx = 0, _jy = 0, _ax = 0, _ay = 0, _az = 0;
 
 static void nunchuk_write(char *buffer, size_t bytes) {
   check_init();
-  if (write(fd, buffer, bytes) != bytes) {
-    janet_panic("I2C Write error");
-  }
+  if (write(fd, buffer, bytes) != bytes)
+    fprintf(stderr, "I2C Write error\n");
 }
 
 static void nunchuk_read(char *buffer, size_t bytes) {
   check_init();
   if (read(fd, buffer, bytes) != bytes)
-    ("read error");
+    fprintf(stderr, "I2C read error\n");
 }
 
 static Janet init(int32_t argc, Janet *argv) {
